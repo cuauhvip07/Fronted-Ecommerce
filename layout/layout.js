@@ -103,9 +103,9 @@ const Layout = (props) => {
   return (
     <React.Fragment>
       <Head>
-        <title>Jardin del Eden</title>
+        <title>{`Jardin del Eden - ${props.title}`}</title>
         <meta charSet="UTF-8" />
-        <meta name="description" content="The ultimate collection of design-agnostic, flexible and accessible React UI Components." />
+        <meta name="description" content={`${props.description}`} />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <meta property="og:type" content="website"></meta>

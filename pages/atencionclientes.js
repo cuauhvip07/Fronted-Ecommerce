@@ -1,14 +1,19 @@
-import React from 'react'
+import Layout from "@/layout/layout"
 
 const AtencionClientes = () => {
   return (
-    <div className="grid">
-      <div className="col-12">
-        <div className="card">
-          <h5>Atencion al cliente</h5>
+    <Layout
+      title="Atencion clientes"
+      description="Apartado para ayudar al usuario con su interaccion en la plataforma"
+    >
+      <div className="grid">
+        <div className="col-12">
+          <div className="card">
+            <h5>Atencion al cliente</h5>
+          </div>
         </div>
       </div>
-    </div>
+    </Layout>
   )
 }
 

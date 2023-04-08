@@ -1,6 +1,6 @@
 // import '@/styles/globals.css'
 import { LayoutProvider } from '../layout/context/layoutcontext';
-import Layout from '../layout/layout';
+// import Layout from '../layout/layout';
 import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
@@ -13,9 +13,9 @@ export default function App({ Component, pageProps }) {
   } else {
     return (
       <LayoutProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        {/* <Layout> */}
+        <Component {...pageProps} />
+        {/* </Layout> */}
       </LayoutProvider>
     );
   }
