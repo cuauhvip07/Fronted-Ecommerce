@@ -15,13 +15,13 @@ const AppMenu = () => {
     {
       label: 'Sección',
       items: [
-        { label: 'Flores', icon: 'pi pi-fw pi-id-card', to: '/flores' },
-        { label: 'Peluches', icon: 'pi pi-fw pi-id-card', to: '/peluches' },
-        { label: 'Carrito de compras', icon: 'pi pi-fw pi-shopping-cart', to: '/carrito' },
-        { label: 'Mis Compras', icon: 'pi pi-fw pi-shopping-bag', to: '/miscompras' },
-        { label: 'Ofertas', icon: 'pi pi-fw pi-tags', to: '/ofertas' },
-        { label: 'Atencion al cliente', icon: 'pi pi-fw pi-comments', to: '/atencionclientes' },
-        { label: 'Configuracion', icon: 'pi pi-fw pi-cog', to: '/configuracion' }
+        { label: 'Flores', icon: 'pi pi-fw pi-id-card', to: '/pages/flores' },
+        { label: 'Peluches', icon: 'pi pi-fw pi-id-card', to: '/pages/peluches' },
+        { label: 'Carrito de compras', icon: 'pi pi-fw pi-shopping-cart', to: '/pages/carrito' },
+        { label: 'Mis Compras', icon: 'pi pi-fw pi-shopping-bag', to: '/pages/miscompras' },
+        { label: 'Ofertas', icon: 'pi pi-fw pi-tags', to: '/pages/ofertas' },
+        { label: 'Atención al cliente', icon: 'pi pi-fw pi-comments', to: '/pages/atencionclientes' },
+        { label: 'Configuración', icon: 'pi pi-fw pi-cog', to: '/pages/configuracion' }
       ]
     }
     // {

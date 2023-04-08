@@ -1,6 +1,5 @@
 import React from 'react';
-// import NotFound from '../pages/pages/notfound/index';
-import PaginaNoEncontrada from './noencontrado';
+import PaginaNoEncontrada from './pages/noencontrado';
 
 const Custom404 = () => {
   return <PaginaNoEncontrada />;
