@@ -10,7 +10,7 @@ const AppMenu = () => {
   const model = [
     {
       label: 'Home',
-      items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/' }]
+      items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/pages/dashboard' }]
     },
     {
       label: 'Sección',
@@ -21,7 +21,8 @@ const AppMenu = () => {
         { label: 'Mis Compras', icon: 'pi pi-fw pi-shopping-bag', to: '/pages/miscompras' },
         { label: 'Ofertas', icon: 'pi pi-fw pi-tags', to: '/pages/ofertas' },
         { label: 'Atención al cliente', icon: 'pi pi-fw pi-comments', to: '/pages/atencionclientes' },
-        { label: 'Configuración', icon: 'pi pi-fw pi-cog', to: '/pages/configuracion' }
+        { label: 'Configuración', icon: 'pi pi-fw pi-cog', to: '/pages/configuracion' },
+        { label: 'Salir', icon: 'pi pi-fw pi-power-off', to: '/' }
       ]
     }
     // {
