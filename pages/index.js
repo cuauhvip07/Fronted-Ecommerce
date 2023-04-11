@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import React, { useContext, useState } from 'react';
 import AppConfig from '@/layout/AppConfig';
 import { Checkbox } from 'primereact/checkbox';
@@ -82,9 +83,15 @@ export default function Home() {
                   <Checkbox inputid="rememberme1" checked={checked} onChange={(e) => setChecked(e.checked)} className="mr-2"></Checkbox>
                   <label htmlFor="rememberme1">Recordar</label>
                 </div>
-                <a className="font-medium no-underline ml-2 text-right cursor-pointer" style={{ color: 'var(--primary-color)' }}>
+                {/* <a className="font-medium no-underline ml-2 text-right cursor-pointer" style={{ color: 'var(--primary-color)' }}>
                   Forgot password?
-                </a>
+                </a> */}
+                <Link
+                  href="/pages/password"
+                  className="font-medium no-underline ml-2 text-right cursor-pointer" style={{ color: 'var(--primary-color)' }}
+                >
+                  Olvido su contraseña?
+                </Link>
               </div>
               <Button label="Iniciar Sesion" className="w-full p-3 text-xl" onClick={validarEnvio} />
               {mensajeAdvertencia && (
