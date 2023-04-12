@@ -80,23 +80,19 @@ export default function Home() {
 
               <div className="flex align-items-center justify-content-between mb-5 gap-5">
                 <div className="flex align-items-center">
-                  <Checkbox inputid="rememberme1" checked={checked} onChange={(e) => setChecked(e.checked)} className="mr-2"></Checkbox>
-                  <label htmlFor="rememberme1">Recordar</label>
+                  <Link
+                    href="/pages/crearcuenta"
+                    className="font-medium no-underline ml-2 text-right cursor-pointer" style={{ color: 'var(--primary-color)' }}
+                  >Crear cuenta</Link>
                 </div>
-                {/* <a className="font-medium no-underline ml-2 text-right cursor-pointer" style={{ color: 'var(--primary-color)' }}>
-                  Forgot password?
-                </a> */}
                 <Link
                   href="/pages/password"
                   className="font-medium no-underline ml-2 text-right cursor-pointer" style={{ color: 'var(--primary-color)' }}
-                >
-                  Olvido su contraseña?
-                </Link>
+                >Olvido su contraseña?</Link>
               </div>
               <Button label="Iniciar Sesion" className="w-full p-3 text-xl" onClick={validarEnvio} />
-              {mensajeAdvertencia && (
-                <p className='font-bold text-center bg-red-600 text-white mt-4 py-2'>{mensajeAdvertencia}</p>
-              )}
+
+              {mensajeAdvertencia && (<p className='font-bold text-center bg-red-600 text-white mt-4 py-2'>{mensajeAdvertencia}</p>)}
             </div>
           </div>
         </div>
