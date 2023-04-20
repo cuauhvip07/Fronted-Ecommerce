@@ -13,32 +13,22 @@ const AppMenu = () => {
       items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/pages/dashboard' }]
     },
     {
-      label: 'Sección',
+      label: 'Catalogos',
       items: [
         { label: 'Flores', icon: 'pi pi-fw pi-id-card', to: '/pages/flores' },
         { label: 'Peluches', icon: 'pi pi-fw pi-id-card', to: '/pages/peluches' },
+        { label: 'Ofertas', icon: 'pi pi-fw pi-tags', to: '/pages/ofertas' },
+      ]
+    },
+    {
+      label: 'Usuario',
+      items: [
         { label: 'Carrito de compras', icon: 'pi pi-fw pi-shopping-cart', to: '/pages/carrito' },
         { label: 'Mis Compras', icon: 'pi pi-fw pi-shopping-bag', to: '/pages/miscompras' },
-        { label: 'Ofertas', icon: 'pi pi-fw pi-tags', to: '/pages/ofertas' },
         { label: 'Atención al cliente', icon: 'pi pi-fw pi-comments', to: '/pages/atencionclientes' },
         { label: 'Configuración', icon: 'pi pi-fw pi-cog', to: '/pages/configuracion' },
-        { label: 'Salir', icon: 'pi pi-fw pi-power-off', to: '/' }
       ]
     }
-    // {
-    //     label: 'Prime Blocks',
-    //     items: [
-    //         { label: 'Free Blocks', icon: 'pi pi-fw pi-eye', to: '/blocks', badge: 'NEW' },
-    //         { label: 'All Blocks', icon: 'pi pi-fw pi-globe', url: 'https://www.primefaces.org/primeblocks-react', target: '_blank' }
-    //     ]
-    // },
-    // {
-    //     label: 'Utilities',
-    //     items: [
-    //         { label: 'PrimeIcons', icon: 'pi pi-fw pi-prime', to: '/utilities/icons' },
-    //         { label: 'PrimeFlex', icon: 'pi pi-fw pi-desktop', url: 'https://www.primefaces.org/primeflex/', target: '_blank' }
-    //     ]
-    // },
     // {
     //     label: 'Pages',
     //     icon: 'pi pi-fw pi-briefcase',
@@ -136,22 +126,6 @@ const AppMenu = () => {
     //         }
     //     ]
     // },
-    // {
-    //     label: 'Get Started',
-    //     items: [
-    //         {
-    //             label: 'Documentation',
-    //             icon: 'pi pi-fw pi-question',
-    //             to: '/documentation'
-    //         },
-    //         {
-    //             label: 'View Source',
-    //             icon: 'pi pi-fw pi-search',
-    //             url: 'https://github.com/primefaces/sakai-react',
-    //             target: '_blank'
-    //         }
-    //     ]
-    // }
   ];
 
   return (
