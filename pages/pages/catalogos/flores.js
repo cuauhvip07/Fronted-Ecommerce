@@ -88,7 +88,7 @@ const CatalogoFlores = () => {
             {/* <Rating value={flor.rating} readOnly cancel={false}></Rating> */}
           </div>
           <div className="flex align-items-center justify-content-between">
-            <Button icon="pi pi-heart" rounded severity="help" aria-label="Favorite" className="mb-4" />
+            <Button icon="pi pi-heart" rounded severity="help" aria-label="Favorite" className="mb-1" />
             <span className="text-2xl font-semibold">${flor.precio}</span>
             <Button icon="pi pi-shopping-cart" className="p-button-rounded" disabled={flor.estatus === 'no disponible'}></Button>
           </div>
