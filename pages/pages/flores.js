@@ -45,21 +45,23 @@ const CatalogoFlores = () => {
     return (
       <div className="col-12">
         <div className="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
-          {/* <img className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" src={`https://primefaces.org/cdn/primereact/images/flor/${flor.image}`} alt={flor.name} /> */}
+          <img className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" src={`https://media.admagazine.com/photos/61eb22cb9b19d943aa117b30/master/w_1600%2Cc_limit/Girasol.jpg`} alt="girasol" />
           <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
             <div className="flex flex-column align-items-center sm:align-items-start gap-3">
               <div className="text-2xl font-bold text-900">{flor.nombre}</div>
               {/* <Rating value={flor.rating} readOnly cancel={false}></Rating> */}
               <div className="flex align-items-center gap-3">
+                <Tag value={flor.estatus} severity={getSeverity(flor)}></Tag>
                 <span className="flex align-items-center gap-2">
                   <i className="pi pi-tag"></i>
                   <span className="font-semibold">{flor.categoria}</span>
                 </span>
-                <Tag value={flor.estatus} severity={getSeverity(flor)}></Tag>
               </div>
+              <span className="text-2xl font-semibold mt-8">${flor.precio}</span>
             </div>
             <div className="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
-              <span className="text-2xl font-semibold">${flor.precio}</span>
+              {/* <span className="text-2xl font-semibold">${flor.precio}</span> */}
+              <Button icon="pi pi-heart" rounded severity="help" aria-label="Favorite" className="my-5" />
               <Button icon="pi pi-shopping-cart" className="p-button-rounded" disabled={flor.estatus === 'agotado'}></Button>
             </div>
           </div>
@@ -81,11 +83,12 @@ const CatalogoFlores = () => {
             <Tag value={flor.estatus} severity={getSeverity(flor)}></Tag>
           </div>
           <div className="flex flex-column align-items-center gap-3 py-5">
-            {/* <img className="w-9 shadow-2 border-round" src={`https://primefaces.org/cdn/primereact/images/flor/${flor.image}`} alt={flor.name} /> */}
+            <img className="w-9 shadow-2 border-round" src={`https://media.admagazine.com/photos/61eb22cb9b19d943aa117b30/master/w_1600%2Cc_limit/Girasol.jpg`} alt="girasol" />
             <div className="text-2xl font-bold">{flor.nombre}</div>
             {/* <Rating value={flor.rating} readOnly cancel={false}></Rating> */}
           </div>
           <div className="flex align-items-center justify-content-between">
+            <Button icon="pi pi-heart" rounded severity="help" aria-label="Favorite" className="mb-4" />
             <span className="text-2xl font-semibold">${flor.precio}</span>
             <Button icon="pi pi-shopping-cart" className="p-button-rounded" disabled={flor.estatus === 'no disponible'}></Button>
           </div>
