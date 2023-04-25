@@ -99,12 +99,12 @@ export default function Home() {
                 <div className="flex align-items-center justify-content-between mb-5 gap-5">
                   <div className="flex align-items-center">
                     <Link
-                      href="/pages/crearcuenta"
+                      href="/pages/pantallainicio/crearcuenta"
                       className="font-medium no-underline ml-2 text-right cursor-pointer" style={{ color: 'var(--primary-color)' }}
                     >Crear cuenta</Link>
                   </div>
                   <Link
-                    href="/pages/password"
+                    href="/pages/pantallainicio/password"
                     className="font-medium no-underline ml-2 text-right cursor-pointer" style={{ color: 'var(--primary-color)' }}
                   >Olvido su contraseña?</Link>
                 </div>

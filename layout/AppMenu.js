@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import AppMenuitem from './AppMenuitem';
 import { LayoutContext } from './context/layoutcontext';
 import { MenuProvider } from './context/menucontext';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 const AppMenu = () => {
   const { layoutConfig } = useContext(LayoutContext);
@@ -15,18 +15,18 @@ const AppMenu = () => {
     {
       label: 'Catalogos',
       items: [
-        { label: 'Flores', icon: 'pi pi-fw pi-id-card', to: '/pages/flores' },
-        { label: 'Peluches', icon: 'pi pi-fw pi-id-card', to: '/pages/peluches' },
-        { label: 'Ofertas', icon: 'pi pi-fw pi-tags', to: '/pages/ofertas' },
+        { label: 'Flores', icon: 'pi pi-fw pi-id-card', to: '/pages/catalogos/flores' },
+        { label: 'Peluches', icon: 'pi pi-fw pi-id-card', to: '/pages/catalogos/peluches' },
+        { label: 'Ofertas', icon: 'pi pi-fw pi-tags', to: '/pages/catalogos/ofertas' },
       ]
     },
     {
       label: 'Usuario',
       items: [
-        { label: 'Carrito de compras', icon: 'pi pi-fw pi-shopping-cart', to: '/pages/carrito' },
-        { label: 'Mis Compras', icon: 'pi pi-fw pi-shopping-bag', to: '/pages/miscompras' },
-        { label: 'Atención al cliente', icon: 'pi pi-fw pi-comments', to: '/pages/atencionclientes' },
-        { label: 'Configuración', icon: 'pi pi-fw pi-cog', to: '/pages/configuracion' },
+        { label: 'Carrito de compras', icon: 'pi pi-fw pi-shopping-cart', to: '/pages/usuario/carrito' },
+        { label: 'Mis Compras', icon: 'pi pi-fw pi-shopping-bag', to: '/pages/usuario/miscompras' },
+        { label: 'Atención al cliente', icon: 'pi pi-fw pi-comments', to: '/pages/usuario/atencionclientes' },
+        { label: 'Configuración', icon: 'pi pi-fw pi-cog', to: '/pages/usuario/configuracion' },
       ]
     }
     // {
