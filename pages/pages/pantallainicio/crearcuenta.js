@@ -137,7 +137,7 @@ const CrearCuenta = () => {
         <Toast ref={toast} />
         <div className="col-12">
           <div className="card">
-            <h5 className='card text-center'>Crear cuenta</h5>
+            <p className='text-center text-6xl font-bold underline'>Crear cuenta</p>
 
             <div className="flex flex-column card-container card" onSubmit={crearUsuario}>
               <div className='flex align-items-center justify-content-center'>
