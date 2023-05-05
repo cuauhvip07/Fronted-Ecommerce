@@ -86,7 +86,7 @@ const AppConfig = (props) => {
               </div>
             </div>
 
-            <h5>Input Style</h5>
+            {/* <h5>Input Style</h5>
             <div className="flex">
               <div className="field-radiobutton flex-1">
                 <RadioButton name="inputStyle" value={'outlined'} checked={layoutConfig.inputStyle === 'outlined'} onChange={(e) => changeInputStyle(e)} inputId="outlined_input"></RadioButton>
@@ -96,7 +96,7 @@ const AppConfig = (props) => {
                 <RadioButton name="inputStyle" value={'filled'} checked={layoutConfig.inputStyle === 'filled'} onChange={(e) => changeInputStyle(e)} inputId="filled_input"></RadioButton>
                 <label htmlFor="filled_input">Filled</label>
               </div>
-            </div>
+            </div> */}
 
             <h5>Ripple Effect</h5>
             <InputSwitch checked={layoutConfig.ripple} onChange={(e) => changeRipple(e)}></InputSwitch>
