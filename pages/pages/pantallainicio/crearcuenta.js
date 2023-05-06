@@ -136,50 +136,57 @@ const CrearCuenta = () => {
 
             <p className='text-center text-6xl font-bold underline'>Crear cuenta</p>
 
-            <div className="flex flex-column card-container">
-              <div className='flex align-items-center justify-content-center'>
+            <div className="card-container mx-auto text-center">
+              <div className=''>
                 <div className='field'>
                   <label htmlFor="nombreCompleto" className="block text-900 text-xl font-medium mb-2">Tu nombre</label>
                   <InputText
-                    id="nombreCompleto" placeholder="Nombre y apellidos" keyfilter="alpha"
-                    className={`${estiloNombre}`} style={{ width: "200px" }}
+                    id="nombreCompleto" placeholder="Nombre y apellidos"
+                    className={`${estiloNombre} p-inputtext-lg`}
                     value={nombre} onChange={(e) => { setNombre(e.target.value) }} />
                 </div>
               </div>
-              <div className='flex align-items-center justify-content-center'>
+              <div className=''>
                 <div className='field'>
                   <label htmlFor="email" className="block text-900 text-xl font-medium mb-2">Correo electrónico</label>
                   <InputText
-                    id="email" placeholder="Ingresa un correo activo" className={`${estiloEmail}`} style={{ width: "200px" }}
+                    id="email" placeholder="Ingresa un correo activo" className={`${estiloEmail} p-inputtext-lg`}
                     value={email} onChange={(e) => { setEmail(e.target.value) }} />
                 </div>
               </div>
-              <div className='flex align-items-center justify-content-center'>
+              <div className=''>
                 <div className='field'>
                   <label className="block text-900 text-xl font-medium mb-2">Contraseña</label>
                   <Password
-                    placeholder='Mínimo 6 caracteres' className={`${estiloPassword}`} style={{ width: "200px" }}
+                    placeholder='Mínimo 6 caracteres' className={`${estiloPassword} p-inputtext-lg`}
                     value={password} onChange={(e) => setPassword(e.target.value)}
                     promptLabel="Crea tu contraseña" weakLabel="Debil" mediumLabel="Medio" strongLabel="Fuerte"
                   />
                 </div>
               </div>
-              <div className='flex align-items-center justify-content-center'>
+              <div className=''>
                 <div className='field'>
                   <label className="block text-900 text-xl font-medium mb-2">Confirmar contraseña</label>
                   <Password
-                    placeholder='Repite tu contraseña' className={`${estiloConfirmPass}`} style={{ width: "200px" }}
+                    placeholder='Repite tu contraseña' className={`${estiloConfirmPass} p-inputtext-lg`}
                     value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} feedback={false}
                   />
                 </div>
               </div>
-              <div className='mx-auto' style={{ width: "260px", textAlign: "center" }}>
+
+              <div className='mx-auto' style={{ width: "220px", textAlign: "center" }}>
                 <Messages ref={msgs} />
               </div>
-              <div className='flex justify-content-evenly my-5'>
-                <Button label="Aceptar" onClick={crearUsuario} severity="success" />
-                <Button label="Cancelar" onClick={cancelarCreacion} severity="danger" />
+
+              <div className='flex justify-content-evenly my-4'>
+                <Button label="Aceptar" onClick={crearUsuario} severity="success" size="large" />
+                <Button label="Cancelar" onClick={cancelarCreacion} severity="danger" size="large" />
               </div>
+            </div>
+            <div className='flex justify-content-center'>
+              <p className='font-semibold mt-1 mx-2'>¿Ya tienes una cuenta?</p>
+              <Button label="Iniciar Sesión" className='mb-4 mx-2' link onClick={cancelarCreacion}
+                icon="pi pi-angle-right" iconPos="right" />
             </div>
 
           </div>
