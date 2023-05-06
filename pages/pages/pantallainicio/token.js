@@ -109,7 +109,7 @@ const Token = () => {
 
       <div className='flex h-screen'>
         <Toast ref={toast} />
-        <div className="col-6 m-auto">
+        <div className="xl:col-6 md:col-7 sm:col-offset-6 m-auto">
           <div className="card ">
 
             <p className='text-center text-6xl font-bold'>Confirma tu cuenta</p>

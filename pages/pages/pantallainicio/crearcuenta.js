@@ -92,7 +92,7 @@ const CrearCuenta = () => {
     setEstiloConfirmPass('')
     //--> Notificar estatus despues de validarlo con back-end
     toast.current.show({ severity: 'success', summary: `${usuarioCreado.titulo}`, detail: `${usuarioCreado.contenido}`, life: 3000 });
-    router.push('/pages/pantallainicio/token')
+    setTimeout(() => { router.push('/pages/pantallainicio/token') }, 1000);
   }
 
   const cancelarCreacion = () => {
@@ -131,7 +131,7 @@ const CrearCuenta = () => {
 
       <div className='flex h-screen'>
         <Toast ref={toast} />
-        <div className="col-6 m-auto">
+        <div className="xl:col-6 md:col-7 sm:col-offset-6 m-auto">
           <div className="card ">
 
             <p className='text-center text-6xl font-bold underline'>Crear cuenta</p>
