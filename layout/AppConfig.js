@@ -98,7 +98,7 @@ const AppConfig = (props) => {
               </div>
             </div> */}
 
-            <h5>Ripple Effect</h5>
+            <h5>Efecto domino</h5>
             <InputSwitch checked={layoutConfig.ripple} onChange={(e) => changeRipple(e)}></InputSwitch>
           </>
         )}

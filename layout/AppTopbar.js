@@ -62,7 +62,7 @@ const AppTopbar = forwardRef((props, ref) => {
         </button>
         <button type="button" className="p-link layout-topbar-button" onClick={() => { router.push('/pages/usuario/perfil') }}>
           <i className="pi pi-user"></i>
-          <span>Profile</span>
+          <span>Perfil</span>
         </button>
         {/* <Link href="/documentation"> */}
         <button type="button" className="p-link layout-topbar-button" onClick={confirmarDesicion}>

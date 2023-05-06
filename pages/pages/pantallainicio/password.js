@@ -74,7 +74,7 @@ const RestablecerPassword = () => {
         <Toast ref={toast} />
         <div className="xl:col-6 md:col-7 sm:col-offset-6 m-auto">
           <div className="card ">
-            <p className='text-center text-6xl font-bold underline'>Restableciendo contraseña</p>
+            <p className='text-center text-4xl font-bold underline'>Restableciendo contraseña</p>
 
             <div className="card-container mx-auto text-center">
               <div className="field">
