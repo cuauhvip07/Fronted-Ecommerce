@@ -5,18 +5,18 @@ import AppConfig from '@/layout/AppConfig';
 import { Toast } from 'primereact/toast';
 import { Button } from 'primereact/button';
 import { Password } from 'primereact/password';
+import { Messages } from 'primereact/messages';
 import { useRouter } from 'next/router';
 import { InputText } from "primereact/inputtext";
-import { Messages } from 'primereact/messages';
 //--> Componentes propios
 import { camposVacios, emailInvalido, passwordInvalido, passwordsInValidas } from '@/components/mensajesNotificaciones/mensajes';
 import { usuarioCreado } from '@/components/mensajesNotificaciones/notificaciones';
 
 const CrearCuenta = () => {
-  //--> Variaable de redireccinamiento
+  //--> Variable de redireccinamiento
   const router = useRouter();
 
-  //--> Mensajes
+  //--> Mensajes y notificaciones
   const toast = useRef(null);
   const msgs = useRef(null);
 
@@ -92,6 +92,7 @@ const CrearCuenta = () => {
     setEstiloConfirmPass('')
     //--> Notificar estatus despues de validarlo con back-end
     toast.current.show({ severity: 'success', summary: `${usuarioCreado.titulo}`, detail: `${usuarioCreado.contenido}`, life: 3000 });
+    router.push('/pages/pantallainicio/token')
   }
 
   const cancelarCreacion = () => {
