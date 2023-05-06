@@ -9,7 +9,7 @@ import { InputText } from "primereact/inputtext";
 import { useRouter } from 'next/router';
 //--> Componentes propios
 import { temporizador } from '@/helpers/funciones';
-import { tokenInvalido, tokenVacio } from '@/components/mensajesNotificaciones/mensajes';
+import { tokenInvalido, campoVacio } from '@/components/mensajesNotificaciones/mensajes';
 import { cuentaConfirmada, envioToken } from '@/components/mensajesNotificaciones/notificaciones';
 
 const Token = () => {
@@ -49,7 +49,7 @@ const Token = () => {
     //--> Validar token vacio
     if (!token) {
       setEstiloToken('p-invalid')
-      mostrarMensaje(tokenVacio)
+      mostrarMensaje(campoVacio)
       setTimeout(() => { limpiarMensaje() }, 3000)
       return
     } else { setEstiloToken('') }

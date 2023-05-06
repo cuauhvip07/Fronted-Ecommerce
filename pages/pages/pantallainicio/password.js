@@ -1,35 +1,46 @@
 import React, { useState, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import AppConfig from '@/layout/AppConfig';
+//--> Componentes de primeReact
 import { Toast } from 'primereact/toast';
 import { Button } from 'primereact/button';
+import { Messages } from 'primereact/messages';
 import { InputText } from "primereact/inputtext";
-import AppConfig from '@/layout/AppConfig';
+//--> Componentes propios
+import { campoVacio, emailInvalido } from '@/components/mensajesNotificaciones/mensajes';
+import { restablecerPass } from '@/components/mensajesNotificaciones/notificaciones';
 
 const RestablecerPassword = () => {
-  //-----------------------| Lista de variables |-----------------------
+  //--> Mensajes y notificaciones
   const toast = useRef(null);
+  const msgs = useRef(null);
+
+  //-----------------------| Lista de variables |-----------------------
   const [email, setEmail] = useState('')
   const [estiloEmail, setEstiloEmail] = useState('')
-  const [mensajeAdvertencia, setMensajeAdvertencia] = useState('')
 
   //-----------------------| Expresion regular |-----------------------
   const validarEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
 
+  //-----------------------| Mensajes de advertencia |-----------------------
+  const mostrarMensaje = (mensaje) => { msgs.current.show({ severity: 'error', detail: `${mensaje}`, sticky: true, closable: false }) };
+  const limpiarMensaje = () => { msgs.current.clear() }
+
   //-----------------------| Funcion de envio |-----------------------
-  const enviarCorreo = (e) => {
-    //--> Validacion antes de enviar
-    e.preventDefault()
+  const restablecerPassword = () => {
+    //--> Campo vacio
     if (!email) {
       setEstiloEmail('p-invalid')
-      setMensajeAdvertencia("Debe registrar su correo")
-      setTimeout(() => { setMensajeAdvertencia('') }, 3000)
+      mostrarMensaje(campoVacio)
+      setTimeout(() => { limpiarMensaje() }, 3000)
       return
     } else { setEstiloEmail('') }
+    //--> Email invalido
     if (!validarEmail.test(email)) {
       setEstiloEmail('p-invalid')
-      setMensajeAdvertencia("El email no es valido")
-      setTimeout(() => { setMensajeAdvertencia('') }, 3000)
+      mostrarMensaje(emailInvalido)
+      setTimeout(() => { limpiarMensaje() }, 3000)
       return
     } else { setEstiloEmail('') }
 
@@ -37,8 +48,8 @@ const RestablecerPassword = () => {
 
     //--> Envio al back-end
     setEmail('')
-    console.log("Datos enviados")
-    toast.current.show({ severity: 'success', summary: 'Envio exitoso!', detail: 'Revisa tu correo', life: 3000 });
+    // console.log("Datos enviados")
+    toast.current.show({ severity: 'success', summary: `${restablecerPass.titulo}`, detail: `${restablecerPass.contenido}`, life: 3000 });
   }
 
   //-----------------------| Lo que se muestra en pantalla |-----------------------
@@ -58,30 +69,41 @@ const RestablecerPassword = () => {
         <meta property="og:ttl" content="604800"></meta>
         <link rel="icon" href={`/favicon.ico`} type="image/x-icon"></link>
       </Head>
-      <div className="grid">
-        <Toast ref={toast} />
-        <div className="col-12">
-          <h5 className='text-center'>Restableciendo contraseña</h5>
-          <div className="card">
 
-            <form className="flex flex-wrap gap-3 p-fluid" onSubmit={enviarCorreo}>
-              <div className="flex-initial">
-                <label htmlFor="correo" className="font-bold block mb-2">Ingresa tu correo</label>
+      <div className='flex h-screen'>
+        <Toast ref={toast} />
+        <div className="xl:col-6 md:col-7 sm:col-offset-6 m-auto">
+          <div className="card ">
+            <p className='text-center text-6xl font-bold underline'>Restableciendo contraseña</p>
+
+            <div className="card-container mx-auto text-center">
+              <div className="field">
+                <label htmlFor="correo" className="block text-900 text-xl font-medium mb-2">Ingresa tu correo</label>
                 <span className="p-input-icon-left">
                   <i className="pi pi-user" />
                   <InputText
-                    id="correo" placeholder="Correo" value={email} onChange={(e) => setEmail(e.target.value)} className={estiloEmail} />
+                    id="correo" placeholder="Correo" value={email} onChange={(e) => setEmail(e.target.value)}
+                    className={`${estiloEmail} p-inputtext-lg`} />
                 </span>
               </div>
-              {mensajeAdvertencia && (
-                <p className='font-bold text-center bg-red-600 text-white mt-4 py-2'>{mensajeAdvertencia}</p>
-              )}
-              <Button label="Restablecer contraseña" className="w-full p-3 text-xl" type='submit' />
-            </form>
 
-            <Link href="/" className="font-medium no-underline ml-2 text-right cursor-pointer" style={{ color: 'var(--primary-color)' }} >
-              Regresar
-            </Link>
+              <div className='mx-auto' style={{ width: "220px", textAlign: "center" }}>
+                <Messages ref={msgs} />
+              </div>
+
+              <div className='flex justify-content-center my-4'>
+                <Button label="Restablecer contraseña" severity="success" size="large" onClick={restablecerPassword} />
+              </div>
+              <Link
+                href="/" className="font-bold no-underline ml-2 cursor-pointer" style={{ color: 'var(--primary-color)' }}
+              >
+                <span>
+                  <i className="pi pi-angle-left" />
+                  Regresar
+                </span>
+              </Link>
+            </div>
+
 
           </div>
         </div>
