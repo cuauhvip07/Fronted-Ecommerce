@@ -10,8 +10,23 @@ import { LayoutContext } from '@/layout/context/layoutcontext';
 import { InputText } from 'primereact/inputtext';
 import { classNames } from 'primereact/utils';
 
+
+
+import * as components from './components';
+import Image from 'next/image';
+import myImage from '../imagenes/login/loto.jpg';
+import myImage1 from '../imagenes/login/flower1.jpeg';
+import loto from '../imagenes/login/principal.png';
+import lotoRose from '../imagenes/login/Rose.png';
+import lotogolden from '../imagenes/login/lotogolden.png';
+import styles from '../styles/styles.module.css';
+
+
+
 export default function Home() {
   //--> Variables
+  const [signIn, toggle]= useState(true);
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
   // const [checked, setChecked] = useState(false);
@@ -74,49 +89,93 @@ export default function Home() {
         <link rel="icon" href={`/favicon.ico`} type="image/x-icon"></link>
       </Head>
 
-      <div className={containerClassName}>
-        <div className="flex flex-column align-items-center justify-content-center">
-          {/* <img src={`/layout/images/logo-${layoutConfig.colorScheme === 'light' ? 'dark' : 'white'}.svg`} alt="Sakai logo" className="mb-5 w-6rem flex-shrink-0" /> */}
-          <div style={{ borderRadius: '56px', padding: '0.3rem', background: 'linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%)' }}>
-            <div className="w-full surface-card py-8 px-5 sm:px-8" style={{ borderRadius: '53px' }}>
-              <div className="text-center mb-5">
-                {/* <img src="/demo/images/login/avatar.png" alt="Image" height="50" className="mb-3" /> */}
-                <div className="text-900 text-3xl font-medium mb-3">Jardin del Eden</div>
-                <span className="text-600 font-medium">Descripcion  de jardin del Eden</span>
-              </div>
+      <div className={styles.body}>
+      <components.Container >
+      
+      <components.SignUpContainer signinIn={signIn}>
+        <components.Form>
+        
+        <Image src={lotogolden} className={styles['logo']}alt="Mi imagen" />
+        <components.Title3>Recuperar Contraseña</components.Title3>
+        <components.Parrafo>Ingresa el correo asociado a tu cuenta</components.Parrafo>
+        <components.Input type='email' placeholder='Email'/>
+        <Button label="Enviar" className="w-full p-3 text-xl" onClick={validarEnvio} />
+        {mensajeAdvertencia && (<p className='font-bold text-center bg-red-600 text-white mt-4 py-2'>{mensajeAdvertencia}</p>)}
+        <components.Anchor onClick={()=> toggle(true)}  >Iniciar Sesión</components.Anchor>
+     
+          
+        </components.Form>
+      </components.SignUpContainer>
 
-              <div>
-                <label htmlFor="email1" className="block text-900 text-xl font-medium mb-2">Email</label>
+
+      <components.SignInContainer signinIn={signIn}>
+        
+        <components.Form>
+        <Image src={loto} className={styles['logo']}alt="Mi imagen" />
+        <components.Title3>Iniciar Sesión</components.Title3>
+        
+        <label htmlFor="email1" className="block text-900 text-xl font-medium mb-2">Email</label>
                 <InputText
                   inputid="email1" value={email} onChange={(e) => setEmail(e.target.value)}
-                  type="text" placeholder="Email address" className={`w-full md:w-30rem mb-5 ${estiloEmail}`} style={{ padding: '1rem' }} />
+                  type="text" placeholder="Email address" className={`className="block text-900  mb-2 w-full p-3  ${estiloEmail}`} 
+                   />
 
-                <label htmlFor="password1" className="block text-900 font-medium text-xl mb-2">Password</label>
+                <label htmlFor="password1" className="block text-900 ">Password</label>
                 <Password
                   inputid="password1" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password"
-                  feedback={false} className="w-full mb-5" inputClassName={`w-full p-3 md:w-30rem ${estiloPassword}`} />
+                  feedback={false} className="w-full " inputClassName={`w-full p-3 md:w-30rem  ${estiloPassword}`} />
 
-                <div className="flex align-items-center justify-content-between mb-5 gap-5">
-                  <div className="flex align-items-center">
+                <components.Anchor onClick={()=> toggle(false)} href='#' >¿Olvidaste tu contraseña?</components.Anchor>
+                <Button label="Iniciar Sesion" className="w-full p-3 mb-3 text-xl" onClick={validarEnvio} />
+
+                {mensajeAdvertencia && (<p className='font-bold text-center bg-red-600 text-white mt-4 py-2'>{mensajeAdvertencia}</p>)}
+
+
+
+          
+          <components.Parrafo>¿Eres Nuevo?</components.Parrafo>
+          <div className="flex align-items-center">
                     <Link
                       href="/pages/pantallainicio/crearcuenta"
                       className="font-medium no-underline ml-2 text-right cursor-pointer" style={{ color: 'var(--primary-color)' }}
                     >Crear cuenta</Link>
-                  </div>
-                  <Link
-                    href="/pages/pantallainicio/password"
-                    className="font-medium no-underline ml-2 text-right cursor-pointer" style={{ color: 'var(--primary-color)' }}
-                  >Olvido su contraseña?</Link>
-                </div>
-                <Button label="Iniciar Sesion" className="w-full p-3 text-xl" onClick={validarEnvio} />
-
-                {mensajeAdvertencia && (<p className='font-bold text-center bg-red-600 text-white mt-4 py-2'>{mensajeAdvertencia}</p>)}
-              </div>
-            </div>
           </div>
-        </div>
-        <AppConfig />
+                
+        </components.Form>
+      </components.SignInContainer>
+
+
+
+
+      <components.OverlayContainer signinIn={signIn}>
+        <components.Overlay signinIn={signIn}>
+
+          <components.leftOverLayPanel signinIn={signIn}>
+          <components.GhostButton onClick={()=> toggle(true)}>Iniciar Sesión</components.GhostButton>
+          </components.leftOverLayPanel>
+
+
+          <components.RightOverLayPanel signinIn={signIn}>
+          <components.Title>Bienvenido de nuevo!</components.Title>
+          <components.Title2>Jardín del Edén</components.Title2>
+          
+          </components.RightOverLayPanel>
+          <Image src={myImage1} className={styles['my-image']}alt="Mi imagen" />
+          <Image src={myImage} className={styles['my-image']} alt="Mi imagen" />
+        </components.Overlay>
+      </components.OverlayContainer>
+      
+      
+      </components.Container>
+      <AppConfig />
       </div>
+     
+
+     
+      
+      
     </>
+    
   )
 }
+

@@ -6,6 +6,8 @@ import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
 import '../styles/layout/layout.scss';
 import dynamic from 'next/dynamic';
+import '../pages/'
+import Chatbot from './chatbot';
 
 // export default function App({ Component, pageProps }) {
 //   // return <Component {...pageProps} />
@@ -23,16 +25,18 @@ import dynamic from 'next/dynamic';
 // }
 
 const App = ({ Component, pageProps }) => {
+  
   // return <Component {...pageProps} />
   if (Component.getLayout) {
-    return <LayoutProvider>{Component.getLayout(<Component {...pageProps} />)}</LayoutProvider>;
+    return <LayoutProvider>{Component.getLayout(<Component {...pageProps} />) } </LayoutProvider>;
   } else {
     return (
       <LayoutProvider>
+        
         {/* <Layout> */}
         <Component {...pageProps} />
         {/* </Layout> */}
-      </LayoutProvider>
+        </LayoutProvider>
     );
   }
 }
