@@ -160,8 +160,8 @@ export default function Home() {
           <components.Title2>Jardín del Edén</components.Title2>
           
           </components.RightOverLayPanel>
-          <Image src={myImage1} className={styles['my-image']}alt="Mi imagen" />
-          <Image src={myImage} className={styles['my-image']} alt="Mi imagen" />
+          <Image src={myImage1} className={styles['my-image']} alt="Mi imagen" priority={true}/>
+          <Image src={myImage} className={styles['my-image']} alt="Mi imagen"  priority={true} />
         </components.Overlay>
       </components.OverlayContainer>
       
