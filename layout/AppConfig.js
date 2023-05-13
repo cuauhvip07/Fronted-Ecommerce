@@ -259,7 +259,7 @@ const AppConfig = (props) => {
               <img src="/layout/images/themes/saga-purple.png" className="w-2rem h-2rem" alt="Saga Purple" />
             </button>
           </div>
-          <div className="col-3">
+          {/* <div className="col-3">
             <button className="p-link w-2rem h-2rem" onClick={() => changeTheme('vela-blue', 'dark')}>
               <img src="/layout/images/themes/vela-blue.png" className="w-2rem h-2rem" alt="Vela Blue" />
             </button>
@@ -278,7 +278,7 @@ const AppConfig = (props) => {
             <button className="p-link w-2rem h-2rem" onClick={() => changeTheme('vela-purple', 'dark')}>
               <img src="/layout/images/themes/vela-purple.png" className="w-2rem h-2rem" alt="Vela Purple" />
             </button>
-          </div>
+          </div> */}
           <div className="col-3">
             <button className="p-link w-2rem h-2rem" onClick={() => changeTheme('arya-blue', 'dark')}>
               <img src="/layout/images/themes/arya-blue.png" className="w-2rem h-2rem" alt="Arya Blue" />
