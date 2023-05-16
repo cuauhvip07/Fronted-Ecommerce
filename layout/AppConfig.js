@@ -19,9 +19,9 @@ const AppConfig = (props) => {
     setLayoutState((prevState) => ({ ...prevState, configSidebarVisible: false }));
   };
 
-  const changeInputStyle = (e) => {
-    setLayoutConfig((prevState) => ({ ...prevState, inputStyle: e.value }));
-  };
+  // const changeInputStyle = (e) => {
+  //   setLayoutConfig((prevState) => ({ ...prevState, inputStyle: e.value }));
+  // };
 
   const changeRipple = (e) => {
     PrimeReact.ripple = e.value;
@@ -257,6 +257,11 @@ const AppConfig = (props) => {
           <div className="col-3">
             <button className="p-link w-2rem h-2rem" onClick={() => changeTheme('saga-purple', 'light')}>
               <img src="/layout/images/themes/saga-purple.png" className="w-2rem h-2rem" alt="Saga Purple" />
+            </button>
+          </div>
+          <div className="col-5">
+            <button className="p-link w-2rem h-2rem" onClick={() => changeTheme('dark-rose', 'dark')}>
+              Rosa oscuro
             </button>
           </div>
           {/* <div className="col-3">
