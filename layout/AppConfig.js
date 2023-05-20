@@ -93,7 +93,7 @@ const AppConfig = (props) => {
 
         <h5>Estilos de diseño</h5>
         <div className="grid">
-          <div className="col-3">
+          {/* <div className="col-3">
             <button className="p-link w-2rem h-2rem" onClick={() => changeTheme('saga-blue', 'light')}>
               <img src="/layout/images/themes/saga-blue.png" className="w-2rem h-2rem" alt="Saga Blue" />
             </button>
@@ -132,7 +132,7 @@ const AppConfig = (props) => {
             <button className="p-link w-2rem h-2rem" onClick={() => changeTheme('arya-purple', 'dark')}>
               <img src="/layout/images/themes/arya-purple.png" className="w-2rem h-2rem" alt="Arya Purple" />
             </button>
-          </div>
+          </div> */}
 
           {/* Temas claros */}
           <div className="col-3">
