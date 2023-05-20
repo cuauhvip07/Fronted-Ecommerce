@@ -92,7 +92,7 @@ export default function Home() {
       <components.SignUpContainer className={`card ${styles.card}`} signinIn={signIn}>
       <components.Form  >
         
-        <Image src={loto} className={styles['logo']}alt="Mi imagen" />
+     
         <h1 className={`font-bold text-center`}>Recuperar contraseña</h1>
         <components.Parrafo>Ingresa el correo asociado a tu cuenta</components.Parrafo>
         <label htmlFor="email1" className="block text-900 ">Email</label>
@@ -101,7 +101,7 @@ export default function Home() {
                   type="text" placeholder="Email address" className={`block text-900  mb-2 w-full p-3  ${estiloEmail}`} 
                    />
 
-        <Button label="Enviar" className="w-full p-3 text-xl" onClick={validarEnvio} />
+        <Button label="Enviar" className="w-full p-3 text-xl" title="enviar" onClick={validarEnvio} />
         {mensajeAdvertencia && (<p className='font-bold text-center bg-red-600 text-white mt-4 py-2'>{mensajeAdvertencia}</p>)}
         <components.Anchor onClick={()=> toggle(true)}  >Iniciar Sesión</components.Anchor>
         
@@ -113,21 +113,21 @@ export default function Home() {
       <components.SignInContainer   className={`card ${styles.card}`} signinIn={signIn}>
         
         <components.Form >
-        <Image src={loto} className={styles['logo']}alt="Mi imagen" />
+        <Image src={loto} className={styles['logo']}alt="Mi imagen"  priority={true} />
         <h1 className={`font-bold text-center`}>Iniciar Sesión</h1>
         
         <label htmlFor="email1" className="block text-900 ">Correo</label>
                 <InputText
                   inputid="email1" value={email} onChange={(e) => setEmail(e.target.value)}
-                  type="text" placeholder="Email address" className={`block text-900  mb-2 w-full p-3  ${estiloEmail}`} 
+                  type="text" placeholder="Correo electrónico" className={`block text-900  mb-2 w-full p-3  ${estiloEmail}`} 
                    />
 
                 <label htmlFor="password1" className="block text-900 ">Contraseña</label>
                 <Password
-                  inputid="password1" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password"
+                  inputid="password1" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Contraseña"
                   feedback={false} className="w-full " inputClassName={`w-full p-3 md:w-30rem  ${estiloPassword}`} />
 
-                <components.Parrafo onClick={()=> toggle(false)} href='#' >¿Olvidaste tu contraseña?</components.Parrafo>
+                <components.Parrafo onClick={()=> toggle(false)} className="font-medium no-underline ml-2 text-right cursor-pointer" style={{ color: 'var(--primary-color)' }}>¿Olvidaste tu contraseña?</components.Parrafo>
                 <Button label="Iniciar Sesion" className="w-full p-3 mb-3 text-xl" onClick={validarEnvio} />
 
                 {mensajeAdvertencia && (<p className='font-bold text-center bg-red-600 text-white mt-4 py-2'>{mensajeAdvertencia}</p>)}

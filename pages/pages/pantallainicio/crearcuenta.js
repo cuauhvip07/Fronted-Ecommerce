@@ -10,7 +10,6 @@ import { useRouter } from 'next/router';
 import { InputText } from "primereact/inputtext";
 
 //-->Imagenes 
-import background from '../../../public/images/Chatbot2.png'
 import Image from 'next/image';
 import loto from '../../../imagenes/login/principal2.png';
 
@@ -20,8 +19,6 @@ import back from '../../../public/images/background.gif';
 import { camposVacios, emailInvalido, passwordInvalido, passwordsInValidas } from '@/components/mensajesNotificaciones/mensajes';
 import { usuarioCreado } from '@/components/mensajesNotificaciones/notificaciones';
 
-import styles from '../../../styles/cuenta.module.css';
-import { ZIndexUtils } from 'primereact/utils';
 
 const CrearCuenta = () => {
   //--> Variable de redireccinamiento
@@ -142,7 +139,7 @@ const CrearCuenta = () => {
         <meta property="og:ttl" content="604800"></meta>
         <link rel="icon" href={`/favicon.ico`} type="image/x-icon"></link>
       </Head>
-      <Image src={back} layout="" priority={true}  className="z-0" style={{width: '100vw', height: '100vh',filter: 'blur(1px)', position: 'absolute'}} alt="Mi imagen"/>
+      <Image src={back}  priority={true}  className="z-0" style={{width: '100vw', height: '100vh',filter: 'blur(1px)', position: 'absolute'}} alt="Mi imagen"/>
       <div className='flex h-screen  overflow-auto '>
   
         <Toast ref={toast} />
@@ -151,7 +148,7 @@ const CrearCuenta = () => {
          <div className={`scalein animation-duration-1000  xl:col-6 md:col-7 sm:col-offset-6 m-auto`}>
           <div className='card  shadow-5'>
             
-             <Image src={loto} style={{ width: '18%', height: '13%',display:'flex',marginLeft:'40%'}} alt="Mi imagen"/>
+             <Image src={loto}  priority={true} style={{ width: '18%', height: '13%',marginLeft:'40%'}} alt="Mi imagen"/>
             <h1 className={`font-bold text-center`}>Crear cuenta</h1>
             
 

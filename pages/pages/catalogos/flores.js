@@ -39,6 +39,13 @@ const CatalogoFlores = () => {
     setDisplayBasic(false);
   };
 
+  const [filteredFlores, setFilteredFlores] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  useEffect(() => {
+    const filterFlores = flores.filter(flor => flor.nombre.toLowerCase().includes(searchTerm.toLowerCase()));
+    setFilteredFlores(filterFlores);
+  }, [flores, searchTerm]);
+
   const renderFooter = () => {
     return (
       <div className="dialog-footer">
@@ -46,7 +53,15 @@ const CatalogoFlores = () => {
       </div>
     );
   };
+  const onSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
   
+
+  
+
+
 
   //--> Indicar estado de la flor
   const getSeverity = (flor) => {
@@ -138,11 +153,11 @@ const CatalogoFlores = () => {
           </div>
           
           <div className="flex align-items-center justify-content-between  ">
-            <Button   icon="pi pi-heart" rounded severity="help" aria-label="Favorite" className="" />
+            <Button  icon="pi pi-heart" rounded severity="help" aria-label="Favorite" className="" />
             <Button label="Detalles" icon="pi pi-search" className=" font-light ml-2" onClick={() => onClick('displayBasic')} />
             <Button label="Agregar" icon="pi pi-shopping-cart" className="font-light ml-2 "disabled={flor.estatus === 'agotado'}></Button>
            
-            <Dialog header={<h2><i className="pi pi-search"></i> Rosa</h2>} className="custom-dialog-header" visible={displayBasic} style={{ width: '25vw' }} footer={renderFooter('displayBasic')} onHide={() => onHide('displayBasic')}>
+            <Dialog header={<h2><i className="pi pi-search"></i> Rosa</h2>}  draggable={false}  className="custom-dialog-header" visible={displayBasic} style={{ width: '25vw' }} footer={renderFooter('displayBasic')} onHide={() => onHide('displayBasic')}>
             <img className="w-8 shadow-3 border-round " src={`https://media.admagazine.com/photos/61eb22cb9b19d943aa117b30/master/w_1600%2Cc_limit/Girasol.jpg`} width={'20%'} alt="girasol" />
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Ut enim ad minim veniam, quis nostrud exercitation </p>    
@@ -171,12 +186,11 @@ const CatalogoFlores = () => {
 
         <span className="p-input-icon-left pr-2">
         <i className="pi pi-search" />
-        <InputText placeholder="Buscar"/>
+        <InputText placeholder="Buscar" value={searchTerm} onChange={onSearch} />
         <Button icon="pi pi-search" className="p-button-warning"/>
-                        
-                    
+                                
         </span>
-        <DataViewLayoutOptions layout={layout} onChange={(e) => setLayout(e.value)} />
+        <DataViewLayoutOptions value={filteredFlores} layout={layout} onChange={(e) => setLayout(e.value)} />
         
    
       </div>
@@ -184,9 +198,6 @@ const CatalogoFlores = () => {
        
     );
   };
-
-  
-
 
   return (
     <Layout
@@ -197,7 +208,7 @@ const CatalogoFlores = () => {
         <div className="col-12">
           <div className="card">
             <h3>Catalogo de flores</h3>
-            <DataView value={flores} itemTemplate={itemTemplate} layout={layout} header={header()} />
+            <DataView value={filteredFlores} itemTemplate={itemTemplate} layout={layout} header={header()} />
           </div>
         </div>
       </div>

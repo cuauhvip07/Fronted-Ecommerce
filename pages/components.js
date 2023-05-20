@@ -170,9 +170,8 @@ ${props => (props.signinIn !== true ? `transform: translateX(50%);` : null)}
  `;
 
  export const Parrafo = styled.p`
- font-size: 14px;
+ font-size: 13px;
    font-weight: 100;
-   line-height: 20px;
    letter-spacing: 0.5px;
 
  `;
