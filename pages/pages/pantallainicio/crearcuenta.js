@@ -8,9 +8,17 @@ import { Password } from 'primereact/password';
 import { Messages } from 'primereact/messages';
 import { useRouter } from 'next/router';
 import { InputText } from "primereact/inputtext";
+
+//-->Imagenes 
+import Image from 'next/image';
+import loto from '../../../imagenes/login/principal2.png';
+
+
+import back from '../../../public/images/background.gif';
 //--> Componentes propios
 import { camposVacios, emailInvalido, passwordInvalido, passwordsInValidas } from '@/components/mensajesNotificaciones/mensajes';
 import { usuarioCreado } from '@/components/mensajesNotificaciones/notificaciones';
+
 
 const CrearCuenta = () => {
   //--> Variable de redireccinamiento
@@ -110,10 +118,13 @@ const CrearCuenta = () => {
 
     //--> Redireccionar
     router.push('/')
+
+    
   }
 
   return (
     <>
+    
       <Head>
         <title>Jardin del Eden - Crear usuario</title>
         <meta charSet="UTF-8" />
@@ -128,66 +139,85 @@ const CrearCuenta = () => {
         <meta property="og:ttl" content="604800"></meta>
         <link rel="icon" href={`/favicon.ico`} type="image/x-icon"></link>
       </Head>
-
-      <div className='flex h-screen'>
+      <Image src={back}  priority={true}  className="z-0" style={{width: '100vw', height: '100vh',filter: 'blur(1px)', position: 'absolute'}} alt="Mi imagen"/>
+      <div className='flex h-screen  overflow-auto '>
+  
         <Toast ref={toast} />
-        <div className="xl:col-6 md:col-7 sm:col-offset-6 m-auto">
-          <div className="card ">
+        
+        <div className="z-1">
+         <div className={`scalein animation-duration-1000  xl:col-6 md:col-7 sm:col-offset-6 m-auto`}>
+          <div className='card  shadow-5'>
+            
+             <Image src={loto}  priority={true} style={{ width: '18%', height: '13%',marginLeft:'40%'}} alt="Mi imagen"/>
+            <h1 className={`font-bold text-center`}>Crear cuenta</h1>
+            
 
-            <p className='text-center text-6xl font-bold underline'>Crear cuenta</p>
-
-            <div className="card-container mx-auto text-center">
+          
+            <div className="card-container mx-auto text-center ">
               <div className='field'>
-                <label htmlFor="nombreCompleto" className="block text-900 text-xl font-medium mb-2">Tu nombre</label>
+                <label htmlFor="nombreCompleto" className="block text-900  ">Tu nombre</label>
                 <InputText
                   id="nombreCompleto" placeholder="Nombre y apellidos"
-                  className={`${estiloNombre} p-inputtext-lg`}
+                  className={`${estiloNombre} w-full p-3 md:w-25rem `}
                   value={nombre} onChange={(e) => { setNombre(e.target.value) }} />
               </div>
               <div className='field'>
-                <label htmlFor="email" className="block text-900 text-xl font-medium mb-2">Correo electrónico</label>
+                <label htmlFor="email" className="block text-900 ">Correo electrónico</label>
                 <InputText
-                  id="email" placeholder="Ingresa un correo activo" className={`${estiloEmail} p-inputtext-lg`}
+                  id="email" placeholder="Correo activo" className={`${estiloEmail} w-full p-3 md:w-25rem`}
                   value={email} onChange={(e) => { setEmail(e.target.value) }} />
               </div>
+              
               <div className='field'>
-                <label className="block text-900 text-xl font-medium mb-2">Contraseña</label>
+                <label  className="block text-900 ">Contraseña</label>
                 <Password
-                  placeholder='Mínimo 6 caracteres' className={`${estiloPassword} p-inputtext-lg`}
+                  id="password" placeholder='Mínimo 6 caracteres'  inputClassName={`w-full p-3 md:w-25rem`} className={`${estiloPassword}`}
                   value={password} onChange={(e) => setPassword(e.target.value)}
                   promptLabel="Crea tu contraseña" weakLabel="Debil" mediumLabel="Medio" strongLabel="Fuerte"
                 />
               </div>
               <div className='field'>
-                <label className="block text-900 text-xl font-medium mb-2">Confirmar contraseña</label>
+                <label  className="block text-900 ">Confirmar contraseña</label>
                 <Password
-                  placeholder='Repite tu contraseña' className={`${estiloConfirmPass} p-inputtext-lg`}
+                  id="cpassword" placeholder='Repite tu contraseña' inputClassName={`w-full p-3 md:w-25rem`} className={`${estiloConfirmPass} `}
                   value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} feedback={false}
                 />
               </div>
-
-              <div className='mx-auto' style={{ width: "220px", textAlign: "center" }}>
+              
+              <div className='mx-auto' style={{ width: "200px", textAlign: "center" }}>
                 <Messages ref={msgs} />
               </div>
 
-              <div className='flex justify-content-evenly my-4'>
-                <Button label="Aceptar" onClick={crearUsuario} severity="success" size="large" />
-                <Button label="Cancelar" onClick={cancelarCreacion} severity="danger" size="large" />
+              <div className='flex justify-content-center mb-2'>
+                <Button label="Aceptar" className='mr-2 w-full p-3 md:w-13rem' onClick={crearUsuario} severity="success" size="large" />
+                <Button label="Cancelar"className='mr-2 w-full p-3 md:w-13rem' onClick={cancelarCreacion} severity="danger" size="large" />
+                
               </div>
             </div>
 
             <div className='flex justify-content-center'>
-              <p className='font-semibold mt-1 mx-2'>¿Ya tienes una cuenta?</p>
-              <Button label="Iniciar Sesión" className='mb-4 mx-2' link onClick={cancelarCreacion}
+              <p className='mt-3'>¿Ya tienes una cuenta?</p>
+              <Button label="Iniciar Sesión" className='mx-2' link onClick={cancelarCreacion}
                 icon="pi pi-angle-right" iconPos="right" />
             </div>
 
           </div>
+          
         </div>
-        <AppConfig />
+        
       </div>
+      
+      <div>
+    
+      <AppConfig />
+      </div>
+
+      </div>
+      
+     
     </>
   )
+  
 }
 
 export default CrearCuenta

@@ -1,24 +1,49 @@
 import React, { useEffect, useState } from "react";
 import Layout from "@/layout/layout"
+import { Tag } from 'primereact/tag';
 import { Button } from 'primereact/button';
+import { Dialog } from 'primereact/dialog';
+import { InputText } from 'primereact/inputtext';
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
 // import { Rating } from 'primereact/rating';
-import { Tag } from 'primereact/tag';
 
 const CatalogoFlores = () => {
-  //--> Variables
+  //----------------| Lista de variables |----------------
   const [flores, setFlores] = useState([])
   const [layout, setLayout] = useState('grid');
+  //-->Detalles de flor
+  const [detallesFlor, setDetallesFlor] = useState({})
+  const [mostrarDialog, setMostrarDialog] = useState(false)
 
   //--> Ejecucion en segundo plano
   useEffect(() => {
     const datosFlores = [
-      { nombre: "Rosa", precio: 5.90, categoria: "primavera", estatus: "disponible" },
-      { nombre: "Tulipan", precio: 6.20, categoria: "otoño", estatus: "agotado" },
-      { nombre: "Girasol", precio: 3.50, categoria: "invierno", estatus: "pocos" },
-      { nombre: "Setosa", precio: 25.23, categoria: "primavera", estatus: "pocos" },
-      { nombre: "Gardenia", precio: 78.60, categoria: "verano", estatus: "disponible" },
-      { nombre: "Versicolor", precio: 84.69, categoria: "verano", estatus: "agotado" },
+      {
+        nombre: "Rosa", precio: 5.90, categoria: "primavera", estatus: "disponible",
+        imagen: "https://png.pngtree.com/png-vector/20210710/ourmid/pngtree-close-up-of-rose-simulation-growth-png-image_3580749.jpg", descripcion: "Descripcion de rosa"
+      },
+      {
+        nombre: "Tulipan", precio: 6.20, categoria: "otoño", estatus: "agotado",
+        imagen: "https://w7.pngwing.com/pngs/666/928/png-transparent-tulip-free-content-flower-georgia-bulldogs-leaf-heart-computer-wallpaper.png",
+        descripcion: "Descripcion de tulipan"
+      },
+      {
+        nombre: "Girasol", precio: 3.50, categoria: "invierno", estatus: "pocos",
+        imagen: "https://media.admagazine.com/photos/61eb22cb9b19d943aa117b30/master/w_1600%2Cc_limit/Girasol.jpg",
+        descripcion: "Descripcion de girasol"
+      },
+      {
+        nombre: "Setosa", precio: 25.23, categoria: "primavera", estatus: "pocos",
+        imagen: "https://img1.freepng.es/20180314/vbq/kisspng-bird-echeveria-agavoides-echeveria-setosa-graptope-lotus-design-material-5aa973bd8fb253.3676960215210546535886.jpg", descripcion: "Descripcion de setosa"
+      },
+      {
+        nombre: "Gardenia", precio: 78.60, categoria: "verano", estatus: "disponible",
+        imagen: "https://us.123rf.com/450wm/rprongjai/rprongjai1910/rprongjai191000001/131915934-flores-de-gardenia-sobre-fondo-blanco.jpg?ver=6", descripcion: "Descripcion de gardenia"
+      },
+      {
+        nombre: "Versicolor", precio: 84.69, categoria: "verano", estatus: "agotado",
+        imagen: "https://img2.freepng.es/20180409/wce/kisspng-cut-flowers-iris-versicolor-iris-5acb7fdb4bc3d7.6318569115232859793103.jpg", descripcion: "Descripcion de versicolor"
+      },
     ]
     setFlores(datosFlores)
   }, [])
@@ -45,7 +70,8 @@ const CatalogoFlores = () => {
     return (
       <div className="col-12">
         <div className="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
-          <img className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" src={`https://media.admagazine.com/photos/61eb22cb9b19d943aa117b30/master/w_1600%2Cc_limit/Girasol.jpg`} alt="girasol" />
+
+          <img className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" src={`${flor.imagen}`} alt={`${flor.nombre}`} style={{ width: '200px', height: '200px' }} />
           <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
             <div className="flex flex-column align-items-center sm:align-items-start gap-3">
               <div className="text-2xl font-bold text-900">{flor.nombre}</div>
@@ -59,11 +85,16 @@ const CatalogoFlores = () => {
               </div>
               <span className="text-2xl font-semibold mt-8">${flor.precio}</span>
             </div>
+
             <div className="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
-              {/* <span className="text-2xl font-semibold">${flor.precio}</span> */}
-              <Button icon="pi pi-heart" rounded severity="help" aria-label="Favorite" className="my-5" />
-              <Button icon="pi pi-shopping-cart" className="p-button-rounded" disabled={flor.estatus === 'agotado'}></Button>
+              <Button label="Favoritos" icon="pi pi-heart" rounded severity="help"
+                aria-label="Favorite" className="p-button-rounded" />
+              <Button label="Agregar" icon="pi pi-shopping-cart" className="p-button-rounded"
+                disabled={flor.estatus === 'agotado'} />
+              <Button label="Detalles" icon="pi pi-external-link" className="p-button-rounded"
+                onClick={() => dialogoFlor(flor)} />
             </div>
+
           </div>
         </div>
       </div>
@@ -75,6 +106,7 @@ const CatalogoFlores = () => {
     return (
       <div className="col-12 sm:col-6 lg:col-12 xl:col-4 p-2">
         <div className="p-4 border-1 surface-border surface-card border-round">
+
           <div className="flex flex-wrap align-items-center justify-content-between gap-2">
             <div className="flex align-items-center gap-2">
               <i className="pi pi-tag"></i>
@@ -82,16 +114,20 @@ const CatalogoFlores = () => {
             </div>
             <Tag value={flor.estatus} severity={getSeverity(flor)}></Tag>
           </div>
+
           <div className="flex flex-column align-items-center gap-3 py-5">
-            <img className="w-9 shadow-2 border-round" src={`https://media.admagazine.com/photos/61eb22cb9b19d943aa117b30/master/w_1600%2Cc_limit/Girasol.jpg`} alt="girasol" />
+            <img className="shadow-2 border-round" src={`${flor.imagen}`} alt={`${flor.nombre}`} style={{ width: '200px', height: '200px' }} />
             <div className="text-2xl font-bold">{flor.nombre}</div>
+            <span className="text-2xl font-bold">${flor.precio}</span>
             {/* <Rating value={flor.rating} readOnly cancel={false}></Rating> */}
           </div>
+
           <div className="flex align-items-center justify-content-between">
-            <Button icon="pi pi-heart" rounded severity="help" aria-label="Favorite" className="mb-1" />
-            <span className="text-2xl font-semibold">${flor.precio}</span>
-            <Button icon="pi pi-shopping-cart" className="p-button-rounded" disabled={flor.estatus === 'no disponible'}></Button>
+            <Button icon="pi pi-heart" rounded severity="help" aria-label="Favorite" className="" />
+            <Button label="Detalles" icon="pi pi-search" className=" font-light ml-2" onClick={() => dialogoFlor(flor)} />
+            <Button label="Agregar" icon="pi pi-shopping-cart" className="font-light ml-2 " disabled={flor.estatus === 'agotado'}></Button>
           </div>
+
         </div>
       </div>
     );
@@ -108,12 +144,34 @@ const CatalogoFlores = () => {
   //--> Barra para cambiar modo de vista
   const header = () => {
     return (
-      <div className="flex justify-content-end">
+      <div className="flex justify-content-between">
+        <span className="p-input-icon-left pr-2">
+          <i className="pi pi-search" />
+          <Button icon="pi pi-search" className="p-button-warning" />
+          <InputText placeholder="Buscar" />
+        </span>
+
         <DataViewLayoutOptions layout={layout} onChange={(e) => setLayout(e.value)} />
       </div>
     );
   };
 
+  //----------------| Funciones para dialogo |----------------
+  const dialogoFlor = (flor) => {
+    setMostrarDialog(true)
+    setDetallesFlor(flor)
+  }
+
+  const cerrarDialogo = () => {
+    setMostrarDialog(false)
+    setDetallesFlor({})
+  }
+
+  const botonesDialogo = (
+    <><Button label="Cerrar" icon="pi pi-times" onClick={cerrarDialogo} className="p-button-text" /></>
+  )
+
+  //----------------| Valor que regresara |----------------
   return (
     <Layout
       title="Flores"
@@ -122,8 +180,25 @@ const CatalogoFlores = () => {
       <div className="grid">
         <div className="col-12">
           <div className="card">
-            <h5>Catalogo de flores</h5>
+
+            <h5>Flores</h5>
             <DataView value={flores} itemTemplate={itemTemplate} layout={layout} header={header()} />
+
+            <Dialog
+              header={`Detalles de ${detallesFlor.nombre}`}
+              visible={mostrarDialog} onHide={cerrarDialogo}
+              footer={botonesDialogo} style={{ width: '50vw' }}
+            >
+              <div className="mx-auto">
+                <img src={detallesFlor.imagen} style={{ width: '200px', height: '200px' }} />
+                <p className="m-0">Nombre:{detallesFlor.nombre}</p>
+                <p className="m-0">Precio:{detallesFlor.precio}</p>
+                <p className="m-0">Categoria:{detallesFlor.categoria}</p>
+                <p className="m-0">Estatus: {detallesFlor.estatus}</p>
+                <p className="m-0">Descripcion: {detallesFlor.descripcion}</p>
+              </div>
+            </Dialog>
+
           </div>
         </div>
       </div>
