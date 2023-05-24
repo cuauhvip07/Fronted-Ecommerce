@@ -21,7 +21,7 @@ import { restablecerPass } from '@/components/mensajesNotificaciones/notificacio
 
 
 
-// Probando el comando en la linea --------------------
+// Probando el comando en la linea ---------------
 
 export default function Home() {
   //--> Uso de contexto
