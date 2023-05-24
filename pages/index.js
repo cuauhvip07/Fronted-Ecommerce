@@ -21,6 +21,8 @@ import { restablecerPass } from '@/components/mensajesNotificaciones/notificacio
 
 
 
+
+
 export default function Home() {
   //--> Uso de contexto
   const { layoutConfig } = useContext(LayoutContext);
